@@ -69,7 +69,6 @@
     }
     .card-header .material-icons-round { font-size: 14px; color: var(--orange); }
 
-    /* ITEMS */
     .item-row {
       display: flex;
       align-items: center;
@@ -95,7 +94,6 @@
     .item-price { font-weight: 700; color: var(--orange); }
     .item-freight { font-size: 11px; color: var(--muted); margin-top: 2px; }
 
-    /* BREAKDOWN */
     .breakdown-row {
       display: flex;
       justify-content: space-between;
@@ -113,7 +111,6 @@
     .breakdown-row.total .label .material-icons-round { color: white; }
     .breakdown-row.total .val { color: white; font-size: 18px; font-weight: 700; }
 
-    /* NOTICE */
     .notice {
       background: #F0FDF4;
       border: 1px solid #BBF7D0;
@@ -128,7 +125,6 @@
     }
     .notice .material-icons-round { font-size: 18px; color: var(--green); flex-shrink: 0; }
 
-    /* PAYMENT */
     .payment-label {
       display: flex;
       align-items: center;
@@ -146,8 +142,6 @@
       display: flex;
       justify-content: center;
     }
-    stripe-buy-button { display: block; }
-
     footer {
       text-align: center;
       margin-top: 32px;
@@ -173,14 +167,14 @@
   <div class="card">
     <div class="card-header">
       <span class="material-icons-round">inventory_2</span>
-      Order Items · 4 pieces
+      Order Items · 5 pieces
     </div>
 
     <div class="item-row">
-      <div class="item-thumb"><img src="https://cbu01.alicdn.com/img/ibank/O1CN01T3xaL81tohJo3zfcZ_!!2217283785949-0-cib.summ.jpg_.webp" alt="DX41"/></div>
+      <div class="item-thumb"><img src="https://cbu01.alicdn.com/img/ibank/O1CN01T3xaL81tohJo3zfcZ_!!2217283785949-0-cib.summ.jpg_.webp" alt="Gift Box"/></div>
       <div class="item-info">
-        <div class="item-name">Card</div>
-        <div class="item-variant">Grey · Gift Box + Card</div>
+        <div class="item-name">Gift Box + Card</div>
+        <div class="item-variant">Grey</div>
       </div>
       <div class="item-right">
         <div class="item-price">¥14.50</div>
@@ -189,19 +183,19 @@
     </div>
 
     <div class="item-row">
-      <div class="item-thumb"><img src="https://si.geilicdn.com/open1636739441-252808396-706400000196b5ba464f0aa08290_1024_1024.jpg?w=300&h=300&cp=1" alt="LXR Hoodie"/></div>
+      <div class="item-thumb"><img src="https://si.geilicdn.com/open1636739441-252808396-706400000196b5ba464f0aa08290_1024_1024.jpg?w=300&h=300&cp=1" alt="LXR Suit"/></div>
       <div class="item-info">
         <div class="item-name">Reflective Tick Short Sleeve + Shorts</div>
         <div class="item-variant">Black · Size S</div>
       </div>
       <div class="item-right">
-        <div class="item-price">¥72</div>
+        <div class="item-price">¥72.00</div>
         <div class="item-freight">+¥10 domestic</div>
       </div>
     </div>
 
     <div class="item-row">
-      <div class="item-thumb"><img src="https://si.geilicdn.com/pcitem333752350-7d1c00000194f512844b0a210256_750_750.jpg.webp?w=300&h=300&cp=1" alt="Casual Tee"/></div>
+      <div class="item-thumb"><img src="https://si.geilicdn.com/pcitem333752350-7d1c00000194f512844b0a210256_750_750.jpg.webp?w=300&h=300&cp=1" alt="Polo"/></div>
       <div class="item-info">
         <div class="item-name">Classic Lapel Polo Shirt</div>
         <div class="item-variant">White · Size M</div>
@@ -211,30 +205,32 @@
         <div class="item-freight">+¥10 domestic</div>
       </div>
     </div>
+
     <div class="item-row">
-      <div class="item-thumb"><img src="https://si.geilicdn.com/open1687429803-1234478995-5eeb0000019c1ce37a4f0a23b491_1200_1200.jpg.webp?w=300&h=300&cp=1" alt="Summer Set 072"/></div>
+      <div class="item-thumb"><img src="https://si.geilicdn.com/open1687429803-1234478995-5eeb0000019c1ce37a4f0a23b491_1200_1200.jpg.webp?w=300&h=300&cp=1" alt="Summer Suit 327"/></div>
       <div class="item-info">
         <div class="item-name">Fashion Trend Summer Suit - 327</div>
-        <div class="item-variant"> Black · Size M</div>
+        <div class="item-variant">Black · Size M</div>
       </div>
       <div class="item-right">
-        <div class="item-price">¥87</div>
+        <div class="item-price">¥87.00</div>
         <div class="item-freight">+¥20 domestic</div>
       </div>
     </div>
-  </div>
-  <div class="item-row">
-      <div class="item-thumb"><img src="https://si.geilicdn.com/open1687429803-1234478995-73b30000019c0e5d82cb0a8133b0_900_900.jpg.webp?w=300&h=300&cp=1" alt="Summer Set 072"/></div>
+
+    <div class="item-row">
+      <div class="item-thumb"><img src="https://si.geilicdn.com/open1687429803-1234478995-73b30000019c0e5d82cb0a8133b0_900_900.jpg.webp?w=300&h=300&cp=1" alt="Summer Suit 093"/></div>
       <div class="item-info">
         <div class="item-name">Fashion Trend Summer Suit - 093</div>
-        <div class="item-variant"> White · Size S</div>
+        <div class="item-variant">White · Size S</div>
       </div>
       <div class="item-right">
-        <div class="item-price">¥94</div>
-        <div class="item-freight">+0 domestic</div>
+        <div class="item-price">¥94.00</div>
+        <div class="item-freight">+¥0 domestic</div>
       </div>
     </div>
   </div>
+
   <div class="card">
     <div class="card-header">
       <span class="material-icons-round">receipt</span>
@@ -242,30 +238,30 @@
     </div>
     <div class="breakdown-row">
       <div class="label"><span class="material-icons-round">shopping_bag</span> Items subtotal</div>
-      <div class="val">¥317.5</div>
+      <div class="val">¥390.38</div>
     </div>
     <div class="breakdown-row">
       <div class="label"><span class="material-icons-round">local_shipping</span> Domestic freight (China)</div>
-      <div class="val">¥30</div>
+      <div class="val">¥45.00</div>
     </div>
     <div class="breakdown-row">
       <div class="label"><span class="material-icons-round">warehouse</span> Warehouse & handling</div>
-      <div class="val">¥60</div>
+      <div class="val">¥60.00</div>
     </div>
     <div class="breakdown-row">
       <div class="label"><span class="material-icons-round">payments</span> Service fee</div>
-      <div class="val">¥14.9</div>
+      <div class="val">¥14.90</div>
     </div>
     <div class="breakdown-row total">
       <div class="label"><span class="material-icons-round">check_circle</span> Total</div>
-      <div class="val">¥435.38</div>
+      <div class="val">¥510.28</div>
     </div>
   </div>
 
   <div class="notice">
     <span class="material-icons-round">check_circle</span>
     <div>
-      <strong>Full transparency.</strong> This price covers item costs, domestic shipping in China, warehouse handling, and free inspection. International shipping to your address is quoted separately. No hidden fees.
+      <strong>Full transparency.</strong> This price covers item costs, domestic shipping in China, warehouse handling, and free inspection. International shipping is quoted separately.
     </div>
   </div>
 
@@ -291,8 +287,7 @@
 
   <footer>
     <img src="https://www.shipzobuy.com/static/assets/logo.b0669864.jpg" alt="Shipzobuy"/><br/>
-    Generated for customer <strong>SAAS502729</strong> · Private forwarding service from China<br/>
-    Questions? Contact your agent directly.
+    Generated for customer <strong>SAAS502729</strong> · Private forwarding service from China
   </footer>
 
 </div>
