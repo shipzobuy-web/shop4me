@@ -1,177 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Shipzobuy | External Service Access</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+import { useState } from "react";
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Inter, Arial, sans-serif;
-      background: #0b0b0c;
-      color: #eaeaea;
-    }
+export default function TeaPage() {
+  const [accepted, setAccepted] = useState(false);
 
-    .wrapper {
-      max-width: 900px;
-      margin: 60px auto;
-      padding: 30px;
-      background: #151517;
-      border-radius: 16px;
-      box-shadow: 0 0 40px rgba(0,0,0,0.4);
-    }
+  return (
+    <div style={styles.body}>
+      
+      {!accepted ? (
+        <div style={styles.card}>
+          
+          <h1 style={styles.h1}>Third-Party Service Disclaimer</h1>
 
-    h1 {
-      font-size: 26px;
-      margin-bottom: 15px;
-    }
+          <p style={styles.p}>
+            You are about to access an external platform hosted at{" "}
+            <b>herbify.live</b>.
+          </p>
 
-    h2 {
-      font-size: 18px;
-      margin-top: 25px;
-      color: #ffffff;
-    }
+          <p style={styles.p}>
+            Shipzobuy does not own, control, or operate this service.  
+            All content, transactions, and data handling are managed entirely by the third-party provider.
+          </p>
 
-    p {
-      font-size: 14px;
-      line-height: 1.7;
-      color: #bdbdbd;
-    }
+          <h3 style={styles.h3}>By continuing you agree that:</h3>
 
-    ul {
-      font-size: 14px;
-      color: #bdbdbd;
-      line-height: 1.7;
-      padding-left: 20px;
-    }
+          <ul style={styles.ul}>
+            <li>You are accessing a third-party service</li>
+            <li>Shipzobuy is not responsible for any content or transactions</li>
+            <li>You accept all risks associated with external usage</li>
+          </ul>
 
-    button {
-      margin-top: 25px;
-      padding: 14px 22px;
-      border: none;
-      border-radius: 10px;
-      background: #5865f2;
-      color: white;
-      font-size: 15px;
-      cursor: pointer;
-      transition: 0.2s;
-    }
+          <button style={styles.button} onClick={() => setAccepted(true)}>
+            Agree & Continue
+          </button>
 
-    button:hover {
-      background: #4752c4;
-    }
+        </div>
+      ) : (
+        <iframe
+          src="/api/herbify"
+          style={styles.iframe}
+        />
+      )}
 
-    #iframeContainer {
-      display: none;
-      width: 100%;
-      height: 100vh;
-    }
+    </div>
+  );
+}
 
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    .fallback {
-      display: none;
-      text-align: center;
-      padding: 20px;
-      background: #111;
-    }
-
-    .fallback a {
-      color: #5865f2;
-      text-decoration: none;
-      font-weight: bold;
-    }
-  </style>
-</head>
-<body>
-
-<div class="wrapper" id="disclaimer">
-  <h1>Third-Party Service Disclaimer & Terms</h1>
-
-  <p>
-    You are about to access an external third-party platform hosted at <strong>Shipzobuy Content Creation Stores</strong>.
-    This service is owned by Shipzobuy, but content by users.
-  </p>
-
-  <h2>1. Limited Affiliation</h2>
-  <p>
-    Shipzobuy has no affiliation, partnership, or control over the external service. All content,
-    products, transactions, and interactions are managed solely by the third-party provider.
-  </p>
-
-  <h2>2. No Liability</h2>
-  <p>
-    Shipzobuy shall not be held liable for any damages, losses, disputes, or issues arising from:
-  </p>
-  <ul>
-    <li>Use of the external platform</li>
-    <li>Transactions or payments made</li>
-    <li>Accuracy or legality of content</li>
-    <li>Data handling or privacy practices</li>
-  </ul>
-
-  <h2>3. User Responsibility</h2>
-  <p>
-    By continuing, you acknowledge that you are accessing this service at your own risk and that
-    you are solely responsible for verifying the legitimacy and safety of the platform.
-  </p>
-
-  <h2>4. Data & Privacy</h2>
-  <p>
-    Any data you provide on the external platform is not processed or stored by Shipzobuy.
-    Please review the third-party’s privacy policy independently.
-  </p>
-
-  <h2>5. Acceptance</h2>
-  <p>
-    By clicking “Agree & Continue”, you confirm that you understand and accept these terms.
-  </p>
-
-  <button onclick="loadApp()">Agree & Continue</button>
-</div>
-
-<div id="iframeContainer">
-  <iframe id="appFrame"></iframe>
-
-  <div class="fallback" id="fallback">
-    <p>The app did not load correctly.</p>
-    <p>
-      <a href="https://herbify.live" target="_blank">
-        Open directly
-      </a>
-    </p>
-  </div>
-</div>
-
-<script>
-  function loadApp() {
-    document.getElementById("disclaimer").style.display = "none";
-    const container = document.getElementById("iframeContainer");
-    const iframe = document.getElementById("appFrame");
-
-    container.style.display = "block";
-
-    iframe.src = "https://herbify.live";
-
-    // fallback detection
-    setTimeout(() => {
-      try {
-        // If iframe didn't load content properly
-        if (!iframe.contentWindow || iframe.contentWindow.length === 0) {
-          document.getElementById("fallback").style.display = "block";
-        }
-      } catch (e) {
-        // Cross-origin = still could be working, so don't always trigger
-        console.log("Cross-origin access blocked (normal)");
-      }
-    }, 4000);
-  }
-</script>
-
-</body>
-</html>
+const styles = {
+  body: {
+    margin: 0,
+    fontFamily: "Arial",
+    background: "#0b0b0c",
+    color: "#fff",
+    minHeight: "100vh",
+  },
+  card: {
+    maxWidth: "800px",
+    margin: "60px auto",
+    padding: "30px",
+    background: "#151517",
+    borderRadius: "14px",
+  },
+  h1: { fontSize: "24px" },
+  h3: { marginTop: "20px" },
+  p: { color: "#bdbdbd", lineHeight: 1.6 },
+  ul: { color: "#bdbdbd", lineHeight: 1.8 },
+  button: {
+    marginTop: "20px",
+    padding: "12px 18px",
+    background: "#5865f2",
+    color: "#fff",
+    border: "none",
+    borderRadius: "10px",
+    cursor: "pointer",
+  },
+  iframe: {
+    width: "100%",
+    height: "100vh",
+    border: "none",
+  },
+};
