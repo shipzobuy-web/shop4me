@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ShipzoBuy | System Status</title>
+
 <style>
   body{
     margin:0;
@@ -11,25 +12,29 @@
     background:#f6f8fc;
     color:#1f2937;
   }
+
   header{
     background:#0f172a;
     color:white;
     padding:30px 20px;
   }
+
   .container{
     max-width:900px;
     margin:0 auto;
     padding:20px;
   }
+
   .badge{
     display:inline-block;
     padding:6px 12px;
     border-radius:999px;
-    background:#22c55e;
+    background:#f59e0b;
     color:white;
     font-size:12px;
     margin-top:10px;
   }
+
   .card{
     background:white;
     padding:20px;
@@ -37,14 +42,15 @@
     margin:15px 0;
     box-shadow:0 2px 10px rgba(0,0,0,0.05);
   }
-  h1,h2,h3{
-    margin:0 0 10px 0;
-  }
+
+  h1,h2,h3{ margin:0 0 10px 0; }
+
   .status-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:10px;
   }
+
   .service{
     padding:10px;
     border-radius:8px;
@@ -52,37 +58,61 @@
     display:flex;
     justify-content:space-between;
   }
+
   .ok{color:#16a34a;font-weight:bold;}
   .warn{color:#f59e0b;font-weight:bold;}
+
   .small{
     font-size:13px;
     color:#6b7280;
     line-height:1.5;
   }
+
+  .critical{
+    border-left:4px solid #f59e0b;
+    background:#fff7ed;
+  }
+
   footer{
     text-align:center;
     padding:30px;
     font-size:12px;
     color:#6b7280;
   }
+
+  .button{
+    display:inline-block;
+    margin-top:12px;
+    padding:10px 14px;
+    background:#111827;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+    font-size:13px;
+  }
+
+  .button:hover{
+    background:#1f2937;
+  }
 </style>
 </head>
+
 <body>
 
 <header>
   <div class="container">
     <h1>ShipzoBuy System Status</h1>
-    <div class="badge">All Systems Operational</div>
+    <div class="badge">Recent Incident Resolved</div>
   </div>
 </header>
 
 <div class="container">
 
-  <div class="card">
-    <h2>Overview</h2>
+  <div class="card critical">
+    <h2>Current Status</h2>
     <p class="small">
-      ShipzoBuy is currently operating normally. All core systems, including ordering, tracking, and account services,
-      are fully restored following recent infrastructure updates and security certificate renewal.
+      All systems are now operational following a temporary service disruption related to SSL certificate renewal
+      and DNS propagation changes. Services have been fully restored and are being monitored.
     </p>
   </div>
 
@@ -124,27 +154,34 @@
   </div>
 
   <div class="card">
-    <h2>Recent Update</h2>
+    <h2>Incident Summary</h2>
     <p class="small">
-      A temporary service interruption occurred due to SSL certificate renewal and DNS propagation adjustments.
-      All services have now been restored and validated across global networks.
-      No data loss or order disruption occurred during this period.
+      A brief outage occurred due to domain DNS propagation and SSL certificate validation during infrastructure updates.
+      No data loss or order interruption occurred. All queued requests were preserved and processed successfully.
     </p>
   </div>
 
   <div class="card">
     <h2>Orders & Disputes</h2>
     <p class="small">
-      All customer orders placed during the maintenance window are being processed normally.
-      Dispute resolution timelines have returned to standard service levels.
-      Our support team remains available for any inquiries.
+      All customer orders remain unaffected and continue processing normally.
+      Dispute resolution timelines have returned to standard operation levels.
+      Customer support remains fully available.
     </p>
+  </div>
+
+  <div class="card">
+    <h2>Learn More</h2>
+    <p class="small">
+      For more details about this incident and platform improvements:
+    </p>
+    <a class="button" href="https://go.shipzobuy.com/down">Learn More</a>
   </div>
 
   <div class="card">
     <h2>Contact</h2>
     <p class="small">
-      For assistance or questions, please contact:<br>
+      For assistance:<br>
       <strong>service@shipzobuy.com</strong>
     </p>
   </div>
