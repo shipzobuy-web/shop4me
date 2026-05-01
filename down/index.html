@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ShipzoBuy | System Status</title>
+<style>
+  body{
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background:#f6f8fc;
+    color:#1f2937;
+  }
+  header{
+    background:#0f172a;
+    color:white;
+    padding:30px 20px;
+  }
+  .container{
+    max-width:900px;
+    margin:0 auto;
+    padding:20px;
+  }
+  .badge{
+    display:inline-block;
+    padding:6px 12px;
+    border-radius:999px;
+    background:#22c55e;
+    color:white;
+    font-size:12px;
+    margin-top:10px;
+  }
+  .card{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    margin:15px 0;
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
+  }
+  h1,h2,h3{
+    margin:0 0 10px 0;
+  }
+  .status-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+  .service{
+    padding:10px;
+    border-radius:8px;
+    background:#f3f4f6;
+    display:flex;
+    justify-content:space-between;
+  }
+  .ok{color:#16a34a;font-weight:bold;}
+  .warn{color:#f59e0b;font-weight:bold;}
+  .small{
+    font-size:13px;
+    color:#6b7280;
+    line-height:1.5;
+  }
+  footer{
+    text-align:center;
+    padding:30px;
+    font-size:12px;
+    color:#6b7280;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>ShipzoBuy System Status</h1>
+    <div class="badge">All Systems Operational</div>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h2>Overview</h2>
+    <p class="small">
+      ShipzoBuy is currently operating normally. All core systems, including ordering, tracking, and account services,
+      are fully restored following recent infrastructure updates and security certificate renewal.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Service Status</h2>
+    <div class="status-grid">
+
+      <div class="service">
+        <span>Website Access</span>
+        <span class="ok">Operational</span>
+      </div>
+
+      <div class="service">
+        <span>SSL Security</span>
+        <span class="ok">Active</span>
+      </div>
+
+      <div class="service">
+        <span>Order Processing</span>
+        <span class="ok">Operational</span>
+      </div>
+
+      <div class="service">
+        <span>Payment Systems</span>
+        <span class="ok">Operational</span>
+      </div>
+
+      <div class="service">
+        <span>Customer Support</span>
+        <span class="ok">Operational</span>
+      </div>
+
+      <div class="service">
+        <span>Dispute Resolution</span>
+        <span class="ok">Operational</span>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Recent Update</h2>
+    <p class="small">
+      A temporary service interruption occurred due to SSL certificate renewal and DNS propagation adjustments.
+      All services have now been restored and validated across global networks.
+      No data loss or order disruption occurred during this period.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Orders & Disputes</h2>
+    <p class="small">
+      All customer orders placed during the maintenance window are being processed normally.
+      Dispute resolution timelines have returned to standard service levels.
+      Our support team remains available for any inquiries.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Contact</h2>
+    <p class="small">
+      For assistance or questions, please contact:<br>
+      <strong>service@shipzobuy.com</strong>
+    </p>
+  </div>
+
+</div>
+
+<footer>
+  © 2026 ShipzoBuy. All rights reserved.
+</footer>
+
+</body>
+</html>
