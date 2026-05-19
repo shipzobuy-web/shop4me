@@ -1,0 +1,67 @@
+<!-- Shipzobuy Support Ticket System -->
+<!-- Place before the closing </body> tag -->
+
+<style>
+/* Shipzobuy ticket system styling */
+
+#sb-main,
+.sb-admin,
+.sb-chat,
+.sb-ticket,
+.sb-list,
+.sb-conversation,
+.sb-editor {
+    font-family: Inter, Arial, sans-serif !important;
+}
+
+.sb-top-bar {
+    background: #111 !important;
+}
+
+.sb-title {
+    font-weight: 600 !important;
+    letter-spacing: 0.2px;
+}
+
+.sb-btn,
+.sb-submit,
+button {
+    background: #111 !important;
+    border-radius: 8px !important;
+    border: none !important;
+    transition: 0.2s ease;
+}
+
+.sb-btn:hover,
+.sb-submit:hover,
+button:hover {
+    opacity: 0.92;
+}
+
+.sb-ticket,
+.sb-conversation {
+    border-radius: 12px !important;
+}
+
+.sb-input input,
+.sb-input textarea,
+input,
+textarea {
+    border-radius: 8px !important;
+}
+
+.sb-chat {
+    box-shadow: 0 10px 35px rgba(0,0,0,0.15) !important;
+}
+</style>
+
+<script>
+/* Enable ticket-only mode */
+SB_TICKETS = true;
+</script>
+
+<!-- Support Board -->
+<script 
+    id="chat-init"
+    src="https://cloud.board.support/account/js/init.js?id=1339354172&mode=tickets">
+</script>
