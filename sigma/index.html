@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon</title>
+
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/2.1/auth0-spa-js.production.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #111827;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        #login, #content {
+            display: none;
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            background: #2563eb;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #9ca3af;
+        }
+    </style>
+</head>
+<body>
+
+<div id="login">
+    <h1>Welcome</h1>
+    <p>Please log in to continue.</p>
+    <button onclick="login()">Login with Auth0</button>
+</div>
+
+<div id="content">
+    <h1>Site not ready yet.</h1>
+</div>
+
+<script>
+const auth0 = await createAuth0Client({
+    domain: "YOUR_DOMAIN.auth0.com",
+    clientId: "YOUR_CLIENT_ID",
+    authorizationParams: {
+        redirect_uri: window.location.origin
+    }
+});
+
+if (window.location.search.includes("code=")) {
+    await auth0.handleRedirectCallback();
+    window.history.replaceState({}, document.title, "/");
+}
+
+const loggedIn = await auth0.isAuthenticated();
+
+if (loggedIn) {
+    document.getElementById("content").style.display = "block";
+} else {
+    document.getElementById("login").style.display = "block";
+}
+
+async function login() {
+    await auth0.loginWithRedirect();
+}
+</script>
+
+</body>
+</html>
