@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon</title>
+    <title>Sigma Connect Auth</title>
 
     <script src="https://cdn.auth0.com/js/auth0-spa-js/2.1/auth0-spa-js.production.js"></script>
 
@@ -52,7 +52,7 @@
 <div id="login">
     <h1>Welcome</h1>
     <p>Please log in to continue.</p>
-    <button onclick="login()">Login with Auth0</button>
+    <button onclick="login()">Login with your Shipzobuy ID</button>
 </div>
 
 <div id="content">
@@ -61,8 +61,8 @@
 
 <script>
 const auth0 = await createAuth0Client({
-    domain: "YOUR_DOMAIN.auth0.com",
-    clientId: "YOUR_CLIENT_ID",
+    domain: "sigma.auth0.com",
+    clientId: "AqoxnYMKyLO12GL2lsKUQYXTGKqbHWm5",
     authorizationParams: {
         redirect_uri: window.location.origin
     }
