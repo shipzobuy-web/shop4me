@@ -1,89 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sigma Connect Auth</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connect ID</title>
 
-    <script src="https://cdn.auth0.com/js/auth0-spa-js/2.1/auth0-spa-js.production.js"></script>
+<script src="https://cdn.auth0.com/js/auth0-spa-js/2.1/auth0-spa-js.production.js"></script>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #111827;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        #login, #content {
-            display: none;
-        }
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#111827;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
 
-        button {
-            padding: 12px 24px;
-            font-size: 16px;
-            border: none;
-            border-radius: 8px;
-            background: #2563eb;
-            color: white;
-            cursor: pointer;
-        }
+.container{
+    text-align:center;
+}
 
-        button:hover {
-            background: #1d4ed8;
-        }
+button{
+    margin-top:20px;
+    padding:12px 24px;
+    border:none;
+    border-radius:8px;
+    background:#2563eb;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
 
-        h1 {
-            margin-bottom: 10px;
-        }
+button:hover{
+    background:#1d4ed8;
+}
 
-        p {
-            color: #9ca3af;
-        }
-    </style>
+#app{
+    display:none;
+}
+</style>
 </head>
 <body>
 
-<div id="login">
-    <h1>Welcome</h1>
-    <p>Please log in to continue.</p>
-    <button onclick="login()">Login with your Shipzobuy ID</button>
+<div class="container" id="login">
+    <h1>ShipzoBuy</h1>
+    <p>Please sign in to continue.</p>
+    <button id="loginBtn">Login with Shipzobuy ID</button>
 </div>
 
-<div id="content">
+<div class="container" id="app">
     <h1>Site not ready yet.</h1>
 </div>
 
-<script>
-const auth0 = await createAuth0Client({
-    domain: "sigma.auth0.com",
-    clientId: "AqoxnYMKyLO12GL2lsKUQYXTGKqbHWm5",
+<script type="module">
+
+const auth0Client = await auth0.createAuth0Client({
+    domain: "shipzobuy.auth0.com",
+    clientId: "VMKL0C6b04VuOKYBOHVqOqMcLNJtWyCL",
     authorizationParams: {
         redirect_uri: window.location.origin
     }
 });
 
 if (window.location.search.includes("code=")) {
-    await auth0.handleRedirectCallback();
-    window.history.replaceState({}, document.title, "/");
+    await auth0Client.handleRedirectCallback();
+    window.history.replaceState({}, document.title, window.location.pathname);
 }
 
-const loggedIn = await auth0.isAuthenticated();
+const loggedIn = await auth0Client.isAuthenticated();
 
 if (loggedIn) {
-    document.getElementById("content").style.display = "block";
+    document.getElementById("login").style.display = "none";
+    document.getElementById("app").style.display = "block";
 } else {
     document.getElementById("login").style.display = "block";
 }
 
-async function login() {
-    await auth0.loginWithRedirect();
-}
+document.getElementById("loginBtn").onclick = async () => {
+    await auth0Client.loginWithRedirect();
+};
+
 </script>
 
 </body>
