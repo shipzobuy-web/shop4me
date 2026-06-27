@@ -3,78 +3,78 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Connect ID</title>
+<title>Sigma Identity | Shipzobuy Global Brands</title>
 
 <script src="https://cdn.auth0.com/js/auth0-spa-js/2.1/auth0-spa-js.production.js"></script>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #111827;
+    color: white;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#111827;
-    color:white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
+.container {
+    text-align: center;
 }
 
-.container{
-    text-align:center;
+button {
+    margin-top: 20px;
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+    cursor: pointer;
 }
 
-button{
-    margin-top:20px;
-    padding:12px 24px;
-    border:none;
-    border-radius:8px;
-    background:#2563eb;
-    color:white;
-    font-size:16px;
-    cursor:pointer;
+button:hover {
+    background: #1d4ed8;
 }
 
-button:hover{
-    background:#1d4ed8;
-}
-
-#app{
-    display:none;
+#app {
+    display: none;
 }
 </style>
 </head>
+
 <body>
 
 <div class="container" id="login">
     <h1>ShipzoBuy</h1>
-    <p>Please sign in to continue.</p>
+    <p>Please sign in to continue</p>
     <button id="loginBtn">Login with Shipzobuy ID</button>
 </div>
 
 <div class="container" id="app">
-    <h1>Site not ready yet.</h1>
+    <h1>Not available in your current region.</h1>
 </div>
 
 <script type="module">
+
+const REDIRECT_URI = "https://go.shipzobuy.com/sigma";
 
 const auth0Client = await auth0.createAuth0Client({
     domain: "shipzobuy.eu.auth0.com",
     clientId: "VMKL0C6b04VuOKYBOHVqOqMcLNJtWyCL",
     authorizationParams: {
-        redirect_uri: window.location.origin
+        redirect_uri: REDIRECT_URI
     }
 });
 
+// Handle login redirect
 if (window.location.search.includes("code=")) {
     await auth0Client.handleRedirectCallback();
-    window.history.replaceState({}, document.title, window.location.pathname);
+    window.history.replaceState({}, document.title, REDIRECT_URI);
 }
 
+// Check login state
 const loggedIn = await auth0Client.isAuthenticated();
 
 if (loggedIn) {
@@ -84,8 +84,13 @@ if (loggedIn) {
     document.getElementById("login").style.display = "block";
 }
 
+// Login button
 document.getElementById("loginBtn").onclick = async () => {
-    await auth0Client.loginWithRedirect();
+    await auth0Client.loginWithRedirect({
+        authorizationParams: {
+            redirect_uri: REDIRECT_URI
+        }
+    });
 };
 
 </script>
