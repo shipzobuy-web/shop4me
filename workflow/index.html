@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shipzobuy Support</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f7f8fa;
+      color: #15171a;
+      min-height: 100vh;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    .header {
+      height: 72px;
+      background: #ffffff;
+      border-bottom: 1px solid #e8eaed;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-mark {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: #111111;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .header-link {
+      color: #666b73;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .header-link:hover {
+      color: #111111;
+    }
+
+    /* Main */
+    .main {
+      width: 100%;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 70px 24px 100px;
+    }
+
+    .screen {
+      display: none;
+    }
+
+    .screen.active {
+      display: block;
+      animation: fadeIn 0.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(5px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero {
+      max-width: 700px;
+      margin: 0 auto 46px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 11px;
+      background: #eeeeef;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #555a61;
+      margin-bottom: 18px;
+    }
+
+    .eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      background: #111111;
+      border-radius: 50%;
+    }
+
+    h1 {
+      font-size: clamp(34px, 5vw, 52px);
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 17px;
+    }
+
+    .hero p {
+      color: #686d75;
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+    .section-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #777c84;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      margin-bottom: 16px;
+    }
+
+    /* Category grid */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .category-card {
+      border: 1px solid #e2e4e7;
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 24px;
+      text-align: left;
+      cursor: pointer;
+      transition: 0.18s ease;
+      min-height: 160px;
+    }
+
+    .category-card:hover {
+      border-color: #bfc3c8;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+    }
+
+    .category-icon {
+      width: 44px;
+      height: 44px;
+      background: #f0f1f2;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 21px;
+      margin-bottom: 18px;
+    }
+
+    .category-card h3 {
+      font-size: 16px;
+      margin-bottom: 7px;
+      letter-spacing: -0.2px;
+    }
+
+    .category-card p {
+      color: #777c84;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    /* Category screen */
+    .back {
+      border: none;
+      background: transparent;
+      color: #666b73;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 30px;
+      padding: 0;
+    }
+
+    .back:hover {
+      color: #111111;
+    }
+
+    .category-heading {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .category-heading .big-icon {
+      font-size: 38px;
+      margin-bottom: 12px;
+    }
+
+    .category-heading h2 {
+      font-size: 30px;
+      letter-spacing: -1px;
+      margin-bottom: 8px;
+    }
+
+    .category-heading p {
+      color: #727780;
+    }
+
+    .question-list {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .question {
+      width: 100%;
+      border: 1px solid #e1e3e6;
+      background: #ffffff;
+      border-radius: 13px;
+      padding: 19px 20px;
+      cursor: pointer;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: 0.15s ease;
+    }
+
+    .question:hover {
+      border-color: #bfc3c8;
+      background: #fcfcfc;
+    }
+
+    .question span:first-child {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .arrow {
+      color: #858a91;
+      font-size: 18px;
+    }
+
+    /* Answer */
+    .answer-box {
+      max-width: 760px;
+      margin: 0 auto;
+      background: #ffffff;
+      border: 1px solid #e2e4e7;
+      border-radius: 18px;
+      padding: 32px;
+    }
+
+    .answer-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 13px;
+      background: #f0f1f2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .answer-box h2 {
+      font-size: 25px;
+      letter-spacing: -0.7px;
+      margin-bottom: 12px;
+    }
+
+    .answer-box p {
+      color: #686d75;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .answer-footer {
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid #eceef0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .answer-footer span {
+      color: #777c84;
+      font-size: 13px;
+    }
+
+    /* Assist redirect */
+    .assist-box {
+      max-width: 620px;
+      margin: 30px auto 0;
+      text-align: center;
+      background: #ffffff;
+      border: 1px solid #e2e4e7;
+      border-radius: 20px;
+      padding: 42px 34px;
+    }
+
+    .assist-logo {
+      width: 58px;
+      height: 58px;
+      border-radius: 16px;
+      background: #111111;
+      color: white;
+      margin: 0 auto 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 25px;
+    }
+
+    .assist-box h2 {
+      font-size: 27px;
+      letter-spacing: -0.8px;
+      margin-bottom: 12px;
+    }
+
+    .assist-box p {
+      color: #6d727a;
+      font-size: 15px;
+      line-height: 1.65;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* Buttons */
+    .primary-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #111111;
+      color: #ffffff;
+      border: none;
+      border-radius: 10px;
+      padding: 13px 19px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.15s ease;
+    }
+
+    .primary-button:hover {
+      background: #2a2a2a;
+      transform: translateY(-1px);
+    }
+
+    .secondary-button {
+      background: #ffffff;
+      border: 1px solid #dedfe2;
+      color: #202226;
+      border-radius: 10px;
+      padding: 12px 17px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .secondary-button:hover {
+      border-color: #bfc3c8;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: auto;
+      padding: 25px 40px;
+      border-top: 1px solid #e8eaed;
+      background: #ffffff;
+      text-align: center;
+      color: #92969c;
+      font-size: 12px;
+    }
+
+    /* Mobile */
+    @media (max-width: 760px) {
+      .header {
+        height: 64px;
+        padding: 0 20px;
+      }
+
+      .main {
+        padding: 45px 17px 70px;
+      }
+
+      .hero {
+        margin-bottom: 32px;
+      }
+
+      h1 {
+        letter-spacing: -1.4px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .category-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .category-card {
+        min-height: auto;
+        padding: 19px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .category-icon {
+        margin: 0;
+        flex-shrink: 0;
+      }
+
+      .answer-box {
+        padding: 25px;
+      }
+
+      .answer-footer {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .answer-footer .primary-button {
+        width: 100%;
+      }
+
+      .assist-box {
+        padding: 34px 22px;
+      }
+
+      .footer {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="page">
+
+  <header class="header">
+    <div class="logo">
+      <div class="logo-mark">S</div>
+      Shipzobuy
+    </div>
+
+    <a href="/" class="header-link">Back to Shipzobuy</a>
+  </header>
+
+
+  <main class="main">
+
+    <!-- HOME -->
+    <section id="home" class="screen active">
+
+      <div class="hero">
+        <div class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          Support Center
+        </div>
+
+        <h1>How can we help?</h1>
+
+        <p>
+          Choose a category below to find an answer to your question.
+          If we can't help here, we'll send you to Shipzobuy Assist.
+        </p>
+      </div>
+
+      <div class="section-title">Choose a category</div>
+
+      <div class="category-grid">
+
+        <button class="category-card" onclick="openCategory('shopping')">
+          <div class="category-icon">🛒</div>
+          <div>
+            <h3>Shopping & Purchasing</h3>
+            <p>Product links, purchasing and supported marketplaces.</p>
+          </div>
+        </button>
+
+        <button class="category-card" onclick="openCategory('orders')">
+          <div class="category-icon">📦</div>
+          <div>
+            <h3>Orders</h3>
+            <p>Questions about an existing Shipzobuy order.</p>
+          </div>
+        </button>
+
+        <button class="category-card" onclick="openCategory('warehouse')">
+          <div class="category-icon">🔍</div>
+          <div>
+            <h3>Warehouse & QC</h3>
+            <p>QC photos, warehouse arrivals, repacking and consolidation.</p>
+          </div>
+        </button>
+
+        <button class="category-card" onclick="openCategory('shipping')">
+          <div class="category-icon">🚚</div>
+          <div>
+            <h3>Shipping & Delivery</h3>
+            <p>Shipping lines, tracking, customs and delivery.</p>
+          </div>
+        </button>
+
+        <button class="category-card" onclick="openCategory('payments')">
+          <div class="category-icon">💳</div>
+          <div>
+            <h3>Payments & Wallet</h3>
+            <p>Payments, wallet balance, refunds and credits.</p>
+          </div>
+        </button>
+
+        <button class="category-card" onclick="openCategory('account')">
+          <div class="category-icon">👤</div>
+          <div>
+            <h3>Account</h3>
+            <p>Login, verification and account-related questions.</p>
+          </div>
+        </button>
+
+        <button class="category-card" onclick="openAssist()">
+          <div class="category-icon">❓</div>
+          <div>
+            <h3>Something Else</h3>
+            <p>Can't find what you're looking for? Get further assistance.</p>
+          </div>
+        </button>
+
+      </div>
+    </section>
+
+
+    <!-- CATEGORY -->
+    <section id="category" class="screen">
+
+      <button class="back" onclick="goHome()">← Back to Support</button>
+
+      <div class="category-heading">
+        <div class="big-icon" id="categoryIcon">🛒</div>
+        <h2 id="categoryTitle">Shopping & Purchasing</h2>
+        <p id="categoryDescription">Choose a question below.</p>
+      </div>
+
+      <div class="question-list" id="questionList"></div>
+
+    </section>
+
+
+    <!-- ANSWER -->
+    <section id="answer" class="screen">
+
+      <button class="back" onclick="goCategory()">← Back</button>
+
+      <div class="answer-box">
+
+        <div class="answer-icon" id="answerIcon">✓</div>
+
+        <h2 id="answerTitle">Question</h2>
+
+        <p id="answerText">
+          Answer goes here.
+        </p>
+
+        <div class="answer-footer">
+
+          <span>Still need help?</span>
+
+          <button class="primary-button" onclick="openAssist()">
+            Continue to Shipzobuy Assist →
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ASSIST -->
+    <section id="assist" class="screen">
+
+      <button class="back" onclick="goHome()">← Back to Support</button>
+
+      <div class="assist-box">
+
+        <div class="assist-logo">S</div>
+
+        <h2>We need a little more help here.</h2>
+
+        <p>
+          This request can't be fully handled by the Support Desk.
+          Continue to Shipzobuy Assist for further assistance.
+        </p>
+
+        <br />
+
+        <a
+          class="primary-button"
+          href="https://go.shipzobuy.com/assist"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Continue to Shipzobuy Assist →
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <footer class="footer">
+    © 2026 Shipzobuy · Support Center
+  </footer>
+
+</div>
+
+
+<script>
+
+  const categories = {
+
+    shopping: {
+      icon: "🛒",
+      title: "Shopping & Purchasing",
+      description: "Find answers about purchasing and products.",
+      questions: [
+        {
+          title: "How does purchasing work?",
+          answer:
+            "Shipzobuy allows you to purchase products from supported Chinese marketplaces. You submit the product information, and Shipzobuy handles the purchasing process on your behalf."
+        },
+        {
+          title: "Which marketplaces are supported?",
+          answer:
+            "Shipzobuy supports purchasing from a range of Chinese marketplaces. If you're unsure whether a particular product or marketplace is supported, continue to Shipzobuy Assist."
+        },
+        {
+          title: "Can you purchase a specific product for me?",
+          answer:
+            "If you have a product link and are unsure whether it can be purchased, our Support Desk may not be able to determine this directly. Continue to Shipzobuy Assist for further assistance."
+        },
+        {
+          title: "I have another purchasing question",
+          assist: true
+        }
+      ]
+    },
+
+    orders: {
+      icon: "📦",
+      title: "Orders",
+      description: "Questions about your Shipzobuy orders.",
+      questions: [
+        {
+          title: "Where can I check my order?",
+          answer:
+            "You can check your current orders from your Shipzobuy account. If you are experiencing a problem with a specific order, continue to Shipzobuy Assist."
+        },
+        {
+          title: "My order has not been updated",
+          assist: true
+        },
+        {
+          title: "I need help with a specific order",
+          assist: true
+        },
+        {
+          title: "Something else",
+          assist: true
+        }
+      ]
+    },
+
+    warehouse: {
+      icon: "🔍",
+      title: "Warehouse & QC",
+      description: "Questions about your warehouse items and QC.",
+      questions: [
+        {
+          title: "What is QC?",
+          answer:
+            "QC, or quality control, allows you to review information and images of your items after they arrive at the Shipzobuy warehouse."
+        },
+        {
+          title: "How do QC photos work?",
+          answer:
+            "QC photos allow you to inspect your items before deciding how you want to proceed with shipping. Additional QC services may be subject to the applicable Shipzobuy fees."
+        },
+        {
+          title: "I have a problem with an item at the warehouse",
+          assist: true
+        },
+        {
+          title: "Something else",
+          assist: true
+        }
+      ]
+    },
+
+    shipping: {
+      icon: "🚚",
+      title: "Shipping & Delivery",
+      description: "Questions about shipping your package.",
+      questions: [
+        {
+          title: "How does international shipping work?",
+          answer:
+            "Once your items are ready at the warehouse, you can select an available international shipping option for your destination."
+        },
+        {
+          title: "Where can I find tracking information?",
+          answer:
+            "Tracking information is available through your Shipzobuy account once your shipment has been processed and tracking becomes available."
+        },
+        {
+          title: "My shipment appears delayed",
+          assist: true
+        },
+        {
+          title: "I have a customs or delivery problem",
+          assist: true
+        }
+      ]
+    },
+
+    payments: {
+      icon: "💳",
+      title: "Payments & Wallet",
+      description: "Questions about payments, refunds and your wallet.",
+      questions: [
+        {
+          title: "What is the Shipzobuy wallet?",
+          answer:
+            "Your Shipzobuy wallet can be used to manage funds available for eligible Shipzobuy purchases and services."
+        },
+        {
+          title: "Where can I see my wallet balance?",
+          answer:
+            "Your current wallet balance can be viewed from your Shipzobuy account."
+        },
+        {
+          title: "I have a payment or refund problem",
+          assist: true
+        },
+        {
+          title: "Something else",
+          assist: true
+        }
+      ]
+    },
+
+    account: {
+      icon: "👤",
+      title: "Account",
+      description: "Questions about your Shipzobuy account.",
+      questions: [
+        {
+          title: "I can't log in",
+          assist: true
+        },
+        {
+          title: "I have an account verification problem",
+          assist: true
+        },
+        {
+          title: "How do I manage my account?",
+          answer:
+            "Your account settings and account-related options can be accessed after signing in to Shipzobuy."
+        },
+        {
+          title: "Something else",
+          assist: true
+        }
+      ]
+    }
+
+  };
+
+
+  let currentCategory = null;
+
+
+  function showScreen(id) {
+
+    document.querySelectorAll(".screen").forEach(screen => {
+      screen.classList.remove("active");
+    });
+
+    document.getElementById(id).classList.add("active");
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+
+
+  function openCategory(category) {
+
+    currentCategory = category;
+
+    const data = categories[category];
+
+    document.getElementById("categoryIcon").textContent = data.icon;
+    document.getElementById("categoryTitle").textContent = data.title;
+    document.getElementById("categoryDescription").textContent = data.description;
+
+    const list = document.getElementById("questionList");
+
+    list.innerHTML = "";
+
+    data.questions.forEach((question, index) => {
+
+      const button = document.createElement("button");
+
+      button.className = "question";
+
+      button.innerHTML = `
+        <span>${question.title}</span>
+        <span class="arrow">→</span>
+      `;
+
+      button.onclick = () => {
+
+        if (question.assist) {
+          openAssist();
+        } else {
+          openAnswer(question);
+        }
+
+      };
+
+      list.appendChild(button);
+
+    });
+
+    showScreen("category");
+  }
+
+
+  function openAnswer(question) {
+
+    document.getElementById("answerTitle").textContent = question.title;
+    document.getElementById("answerText").textContent = question.answer;
+
+    showScreen("answer");
+  }
+
+
+  function openAssist() {
+    showScreen("assist");
+  }
+
+
+  function goHome() {
+    showScreen("home");
+  }
+
+
+  function goCategory() {
+
+    if (currentCategory) {
+      showScreen("category");
+    } else {
+      showScreen("home");
+    }
+
+  }
+
+</script>
+
+</body>
+</html>
